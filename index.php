@@ -1,3 +1,12 @@
+<?php
+$db = new mysqli("localhost", "root", "", "chat");
+
+if ($db->connect_error) {
+	die("Sorry, there was a problem connecting to our database.");
+}
+@$pickusername = stripslashes(htmlspecialchars($_GET['pickusername']));
+@$username = stripslashes(htmlspecialchars($_GET['username']));
+?>
 <html>
 <head>
 	<title>Messenger</title>
@@ -193,7 +202,7 @@
 <!--<p class="buttonp"><button onclick="chooseusername()">Choose Username</button></p>-->
 </div>
 <div class="msg-container">
-	<div class="header" id=""><font id="font_id">Messenger</font><font id="right_id">Welcome</font></div>
+	<div class="header" id=""><font id="font_id">Messenger</font><font id="right_id">Welcome <?php echo @$pickusername ?></font></div>
 	<div class="msg-area" id="msg-area"></div>
 	<div class="bottom"><input type="text" name="msginput" class="msginput" id="msginput" onkeydown="if (event.keyCode == 13) sendmsg()" value="" placeholder="Enter your message here ... (Press enter to send message)"></div>
 </div>

@@ -4,7 +4,7 @@ $db = new mysqli("localhost", "root", "", "chat");
 if ($db->connect_error) {
 	die("Sorry, there was a problem connecting to our database.");
 }
-
+@$pickusername = stripslashes(htmlspecialchars($_GET['pickusername']));
 $username = stripslashes(htmlspecialchars($_GET['username']));
 
 $result = $db->prepare("SELECT * FROM messages");
